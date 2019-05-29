@@ -12,6 +12,9 @@ The scripts & config files for Approach 1 are attached in this repository.
 Filebeat is running in a container. We make use of the filebeat input type "docker". Here, filebeat in the container reads the container logs from the folder "/usr/share/filebeat/containers" which is mapped ( bind mounted) from the host folder /var/lib/docker/containers. Filebet reads the logs from all containers in the host. It can also be configured to read from specific containers only by putting their ids under "containers.ids:" in the k9_docker_filebeat.yml file
 
 ---------------- common commands-----------------------------------
+
 docker build -f k9_filebeat_dockerfile -t custom-filebeat .
+
 docker container run -d -e host_UID=$UID --name custom-filebeat-container -v /var/lib/docker/containers:/usr/share/filebeat/containers custom-filebeat
+
 docker container exec -it custom-filebeat-container bash

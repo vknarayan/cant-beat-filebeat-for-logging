@@ -1,0 +1,24 @@
+filebeat.inputs:
+- type: docker
+  containers.path: "/usr/share/filebeat/containers"
+  containers.ids: 
+    - '*'
+#-------------------------- Elasticsearch output ------------------------------
+output.elasticsearch:
+# Array of hosts to connect to.
+  hosts: ["3.86.90.29:9200"]
+  index: "dockerlog-%{[beat.version]}-%{+yyyy.MM.dd}"
+
+#template loading is enabled by default
+setup.template.enabled: false
+#setup.template.overwrite: true
+#setup.template.name: "dockerlog-%{[beat.version]}"
+#setup.template.pattern: "dockerlog-%{[beat.version]}-*"
+#setup.template.fields: "/usr/share/filebeat/fields.yml"
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-# This prepares image for running filebeat with gosu
+# This prepares image for running filebeat with updated config file
 
 FROM docker.elastic.co/beats/filebeat:6.6.0
 USER root

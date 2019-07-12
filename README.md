@@ -10,10 +10,10 @@ There are different approaches to using filebeat for collecting logs from contai
 
 The scripts & config files for Approach 1 are attached in this repository. 
 
-#### Common commands
+#### Commands
 
-docker build -f k9_filebeat_dockerfile -t custom-filebeat .
+docker build -f filebeat_dockerfile -t custom-filebeat .
 
-docker container run -d -e host_UID=$UID --name custom-filebeat-container -v /var/lib/docker/containers:/usr/share/filebeat/containers custom-filebeat
+docker container run -d --name custom-filebeat-container -v /var/lib/docker/containers:/usr/share/filebeat/containers custom-filebeat
 
 docker container exec -it custom-filebeat-container bash

@@ -9,4 +9,7 @@ COPY filebeat.yml /usr/share/filebeat/filebeat.yml
 #provide permission to filebeat.yml
 RUN chmod 640 /usr/share/filebeat/filebeat.yml
 
+# Switch back to filebeat user for security
+USER filebeat
+
 CMD ["filebeat", "-c", "filebeat.yml"]

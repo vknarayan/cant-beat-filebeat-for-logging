@@ -3,10 +3,10 @@
 FROM docker.elastic.co/beats/filebeat:6.6.0
 USER root
 
-#copy filebeat.yml into image
+# copy filebeat.yml into image
 COPY filebeat.yml /usr/share/filebeat/filebeat.yml
 
-#provide permission to filebeat.yml
+# provide permission to filebeat.yml
 RUN chmod 640 /usr/share/filebeat/filebeat.yml
 
-CMD ["filebeat", "-c", "filebeat.yml"]
+CMD ["filebeat", "-e", "-c", "/usr/share/filebeat/filebeat.yml"]

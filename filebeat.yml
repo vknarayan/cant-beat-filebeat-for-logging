@@ -1,20 +1,14 @@
 filebeat.inputs:
-- type: docker
-  containers.path: "/usr/share/filebeat/containers"
-  containers.ids: 
-    - '*'
-#-------------------------- Elasticsearch output ------------------------------
+  - type: docker
+    containers.path: "/usr/share/filebeat/containers"
+    containers.ids:
+      - "*"
+
+# -------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
-# Array of hosts to connect to.
-  hosts: ["3.86.90.29:9200"]
+  # Configure via environment variable at runtime to avoid hardcoding endpoints.
+  hosts: ["${ELASTICSEARCH_HOSTS:http://elasticsearch:9200}"]
   index: "dockerlog-%{[beat.version]}-%{+yyyy.MM.dd}"
 
-#template loading is enabled by default
+# template loading is enabled by default
 setup.template.enabled: false
-
-
-
-
-
-
-
